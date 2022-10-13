@@ -1,2 +1,11 @@
 cache/
-out/
+.env
+*/.DS_store
+.DS_store
+broadcast/*/*/*
+!broadcast/*/*/run-latest.json
+
+out/*/*
+!out/WLNR.sol/*
+!out/Resolver.sol/*
+!out/ERC721.sol/*
