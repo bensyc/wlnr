@@ -8,10 +8,10 @@ import "src/interface/iWLNR.sol";
 import "src/interface/iLNR.sol";
 import "src/interface/IENS.sol";
 import "src/interface/iERC721.sol";
+
 /**
  * @dev : WLNR Resolver Base
  */
- 
 abstract contract ResolverBase {
     /// @dev : Modifier to allow only dev
     modifier onlyDev() {
@@ -60,7 +60,7 @@ abstract contract ResolverBase {
      * @param value : token balance to withdraw
      */
     function withdrawToken(address token, uint256 value) external payable {
-        require(token != address(this), "WRAP_LOCKED");
+        require(token != address(this), "WRAPPER_LOCKED");
         iERC721(token).transferFrom(address(this), WLNR.Dev(), value);
     }
 
@@ -121,7 +121,7 @@ contract Resolver is ResolverBase {
      * @param node : subdomain
      */
     modifier onlyOwner(bytes32 node) {
-        require(msg.sender == LNR.addr(node), "Resolver: NOT_AUTHORISED");
+        require(msg.sender == LNR.addr(node), "NOT_AUTHORISED");
         _;
     }
 
@@ -263,7 +263,7 @@ contract Resolver is ResolverBase {
                     "/erc721:",
                     address(WLNR).toHexString(),
                     "/",
-                    WLNR.NH2ID(node).toString()
+                    WLNR.Namehash2ID(node).toString()
                 );
             } else {
                 return _text[bytes32(0)][key];
@@ -291,7 +291,7 @@ contract Resolver is ResolverBase {
     function name(bytes32 node) external view returns (string memory _name) {
         _name = _text[node]["name"];
         if (bytes(_name).length == 0) {
-            return string.concat(string(abi.encodePacked(WLNR.NH2ID(node))), ".wlnr.eth");
+            return string.concat(string(abi.encodePacked(WLNR.Namehash2ID(node))), ".wlnr.eth");
         }
     }
 }

@@ -45,7 +45,8 @@ contract Devanagari{
             ok = isNum(_name, _len);
         }
         return(ok ? (uint(bytes32(_name) >> (256 - (_len * 8))), _len / 3) : (0,0));
-    }*/
+    }
+    */
 
     function isAlpha(bytes calldata _name) external view returns(bool){
         uint _len = _name.length;

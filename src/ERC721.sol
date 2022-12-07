@@ -15,17 +15,21 @@ abstract contract ERC721 is Base {
     //using LibString for uint;
     //using LibNick for string;
     //using LibString for address;
+
     /*//////////////////////////////////////////////////////////////
                          Name Service Bridge
     //////////////////////////////////////////////////////////////*/
+
     /*//////////////////////////////////////////////////////////////
                          METADATA STORAGE/LOGIC
     //////////////////////////////////////////////////////////////*/
 
     //function tokenURI(uint256 id) external view returns (string memory);
+
     /*//////////////////////////////////////////////////////////////
                                  EVENTS
     //////////////////////////////////////////////////////////////*/
+    
     event Deposit(address indexed from, uint256 amount);
     event Withdrawal(address indexed to, uint256 amount);
 
@@ -47,8 +51,6 @@ abstract contract ERC721 is Base {
 
     mapping(uint256 => address) public getApproved;
     mapping(address => mapping(address => bool)) public isApprovedForAll;
-
-
 
     /*//////////////////////////////////////////////////////////////
                               ERC721 LOGIC
@@ -123,18 +125,19 @@ abstract contract ERC721 is Base {
     /*//////////////////////////////////////////////////////////////
                               ERC165 LOGIC
     //////////////////////////////////////////////////////////////*/
-
-    /*function supportsInterface(bytes4 interfaceId) external view returns (bool) {
+    /*
+    function supportsInterface(bytes4 interfaceId) external view returns (bool) {
         return
             interfaceId == 0x01ffc9a7 || // ERC165 Interface ID for ERC165
             interfaceId == 0x80ac58cd || // ERC165 Interface ID for ERC721
             interfaceId == 0x5b5e139f; // ERC165 Interface ID for ERC721Metadata
-    }*/
+    }
+    */
 
     /*//////////////////////////////////////////////////////////////
                         INTERNAL MINT/BURN LOGIC
     //////////////////////////////////////////////////////////////*/
-/*
+    /*
     function _mint(address to, uint256 id) internal {
         //require(to != address(0), "INVALID_RECIPIENT");
         require(LNR.owner(bytes32(id)) == address(0), "ALREADY_MINTED");
@@ -162,11 +165,12 @@ abstract contract ERC721 is Base {
 
         emit Transfer(owner, address(0), id);
     }
-*/
+    */
+
     /*//////////////////////////////////////////////////////////////
                         INTERNAL SAFE MINT LOGIC
-    //////////////////////////////////////////////////////////////
-
+    //////////////////////////////////////////////////////////////*/
+    /*
     function _safeMint(address to, uint256 id) internal {
         _mint(to, id);
         require(
@@ -189,7 +193,8 @@ abstract contract ERC721 is Base {
                 ERC721TokenReceiver.onERC721Received.selector,
             "UNSAFE_RECIPIENT"
         );
-    }*/
+    }
+    */
 }
 
 /// @notice A generic interface for a contract which properly accepts ERC721 tokens.
@@ -200,7 +205,7 @@ abstract contract ERC721TokenReceiver {
         address,
         uint256,
         bytes calldata
-    ) external returns (bytes4) {
+    ) external virtual returns (bytes4) {
         return ERC721TokenReceiver.onERC721Received.selector;
     }
 }

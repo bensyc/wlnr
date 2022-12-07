@@ -1,10 +1,16 @@
 // SPDX-License-Identifier: WTFPL.ETH
 pragma solidity >0.8.0 <0.9.0;
+
 import "src/interface/iLNR.sol";
 import "src/interface/iENS.sol";
 import "src/interface/iERC721.sol";
 //import "src/utils/LibNick.sol";
 //import "src/utils/LibString.sol";
+
+/**
+ * @author 0xc0de4c0ffee, sshmatrix (BeenSick Labs/BENSYC)
+ * @title WLNR Base
+ */
 abstract contract Base {
     address public Dev;
     string public constant name = "Wrapped Linagee Name Registrar";

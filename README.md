@@ -1,10 +1,7 @@
-# BENSYC Contracts
+# WLNR Contracts
 
 ## [Install Foundry](https://getfoundry.sh/)
-`curl -L https://foundry.paradigm.xyz | bash` && `foundryup`
-
-## Install dependency
-`forge install foundry-rs/forge-std`
+`curl -L https://foundry.paradigm.xyz | bash && source ~/.bashrc && foundryup`
 
 ## Test
  `./test/mainnet.sh`

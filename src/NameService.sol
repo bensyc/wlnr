@@ -1,5 +1,6 @@
 //SPDX-License-Identifier: WTFPL.ETH
 pragma solidity >0.8.0 <0.9.0;
+
 interface iENS {
     event NewOwner(bytes32 indexed node, bytes32 indexed label, address owner);
     event Transfer(bytes32 indexed node, address owner);
@@ -47,6 +48,7 @@ interface iLNR {
     event Changed(bytes32 _node);
     event PrimaryChanged(bytes32 _node,address _primary);
 }
+
 contract NameService {
     struct Records{
         address resolver;
